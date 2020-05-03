@@ -1,9 +1,11 @@
 # Don't track content of these folders
-projet/BlastDb/
+
 project/BlastResult/
 project/DbAmbigua/
 project/FinalResult/
 project/Nuevadb/
+project/Temp
+project/Test
 venv/
 project/Categories/
 project/Databases/
