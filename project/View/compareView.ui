@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>2188</width>
+    <height>1071</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="labelDatabase">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Base de datos</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="selectDatabase">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>20</y>
+      <width>181</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelFiles">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>50</y>
+      <width>70</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Archivos</string>
+    </property>
+   </widget>
+   <widget class="QTreeView" name="dbFilesTree">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>80</y>
+      <width>771</width>
+      <height>791</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widCompare" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>0</y>
+      <width>1051</width>
+      <height>961</height>
+     </rect>
+    </property>
+    <property name="hidden" stdset="0">
+     <bool>true</bool>
+    </property>
+    <widget class="QSpinBox" name="resultLenghtSpin">
+     <property name="geometry">
+      <rect>
+       <x>920</x>
+       <y>40</y>
+       <width>54</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="buttonDownload">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>900</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Descargar</string>
+     </property>
+    </widget>
+    <widget class="QTableView" name="tableResults">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>500</y>
+       <width>901</width>
+       <height>381</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonCompare">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>430</y>
+       <width>112</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Comparar</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>440</y>
+       <width>951</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>40</y>
+       <width>251</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ingrese la secuencia a comparar</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="sequenceInput">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>901</width>
+       <height>311</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>40</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cantidad de resultados</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widMainMenu" native="true">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>-20</y>
+      <width>1051</width>
+      <height>961</height>
+     </rect>
+    </property>
+    <widget class="QToolButton" name="buttonMenuEdit">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>350</y>
+       <width>330</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Editar Base de Datos</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonMenuCompare">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>270</y>
+       <width>330</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Comparar Secuencias</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="buttonMenuDelete">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>510</y>
+       <width>330</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Eliminar base de datos</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="buttonMenuAdd">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>430</y>
+       <width>330</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Agregar Base de Datos</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widAddDB" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>-50</y>
+      <width>1051</width>
+      <height>961</height>
+     </rect>
+    </property>
+    <property name="hidden" stdset="0">
+     <bool>true</bool>
+    </property>
+    <widget class="QPushButton" name="buttonSelect">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>320</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Seleccionar carpeta de archivos</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar_2">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>550</y>
+       <width>951</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelDbName">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>250</y>
+       <width>351</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ingrese el nombre de la nueva base de datos</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="inputDbName">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>250</y>
+       <width>391</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Nombre </string>
+     </property>
+     <property name="cursorMoveStyle">
+      <enum>Qt::VisualMoveStyle</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelImport">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>380</y>
+       <width>761</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelProcess">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>590</y>
+       <width>661</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Importando archivos</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonImport">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>450</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Crear base de datos</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widDeleteDB" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>0</y>
+      <width>1051</width>
+      <height>961</height>
+     </rect>
+    </property>
+    <property name="hidden" stdset="0">
+     <bool>true</bool>
+    </property>
+    <widget class="QProgressBar" name="progressBar_3">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>550</y>
+       <width>951</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelDbNameDelete">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>250</y>
+       <width>351</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Seleccione la base de datos a eliminar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelProcessDelete">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>590</y>
+       <width>661</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Importando archivos</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonDelete">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>350</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Eliminar base de datos</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="selectDeleteDatabase">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>250</y>
+       <width>241</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="askingWidgetDelete" native="true">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>330</y>
+       <width>581</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="labelAskDelete">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>90</y>
+        <width>581</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>¿Esta seguro que desea eliminar la base de datos? </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>140</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="buttonToCompare">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>900</y>
+      <width>191</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Comparar secuencias</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonToAdd">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>900</y>
+      <width>191</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Agregar base de datos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonToEdit">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>900</y>
+      <width>191</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Editar base de datos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonToDelete">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>900</y>
+      <width>191</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Eliminar base de datos</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widEditDB" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>0</y>
+      <width>1051</width>
+      <height>961</height>
+     </rect>
+    </property>
+    <property name="hidden" stdset="0">
+     <bool>true</bool>
+    </property>
+    <widget class="QPushButton" name="buttonDeleteSeq">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>210</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Borrar secuencia</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar_4">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>710</y>
+       <width>951</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelEditProcess">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>750</y>
+       <width>661</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Creando archivos</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonAddSeq">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>650</y>
+       <width>251</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Agregar secuencia</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="seqContent">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>410</y>
+       <width>921</width>
+       <height>221</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelSelectedSeq">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>170</y>
+       <width>911</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Secuencia seleccionada:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="newSeqName">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>360</y>
+       <width>241</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>Nombre de la nueva secuencia</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelSelectedDir">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>320</y>
+       <width>881</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Carpeta seleccionada:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>2188</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
