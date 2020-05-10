@@ -1,6 +1,6 @@
 import sys
-from PySide.QtGui import *
-from PySide.QtCore import *
+from PySide import QtCore as QtCore
+from PySide import QtGui as QtGui
 from project.View.compareView_ui import Ui_mainWindow
 import AddController as AC
 import DeleteController as DC
@@ -8,12 +8,12 @@ import EditController as EC
 import CompareController as CC
 import os
 
-class MainWindow(QMainWindow, Ui_mainWindow):
+class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
-        self.dbFilesTree =QTreeView(self)
-        self.dbFilesTree.setGeometry(QRect(60, 80, 771, 791))
+        self.dbFilesTree =QtGui.QTreeView(self)
+        self.dbFilesTree.setGeometry(QtCore.QRect(60, 80, 771, 791))
         self.dbFilesTree.setObjectName("dbFilesTree")
         self.widCompare.hide()
         self.widAddDB.hide()
@@ -71,7 +71,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             if len(self.dbList)>0:
                 selectedDb = self.resourcePath('\Databases\\'+self.dbList[0])
         if (selectedDb!=""):
-            self.filemodel = QFileSystemModel()
+            self.filemodel = QtGui.QFileSystemModel()
             self.filemodel.setRootPath(selectedDb)
             self.EC.setDb(self.dbName)
             self.AC.setDb(self.dbName)

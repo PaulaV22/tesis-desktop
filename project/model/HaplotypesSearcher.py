@@ -20,6 +20,7 @@ class HaplotypesSearcher(QRunnable):
         else:
             self.db = "BoLa"
         self.projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
         self.categories  = {"ALTA": 1, "MEDIA": 1, "BAJA": 1}
         self.categoriesPath = self.projectPath+"/Categories"
         self.setDb(self.db)

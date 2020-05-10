@@ -1,5 +1,5 @@
 # Don't track content of these folders
-
+project/Blastdb/
 project/BlastResult/
 project/DbAmbigua/
 project/FinalResult/
@@ -9,5 +9,6 @@ project/Test
 venv/
 project/Categories/
 project/Databases/
-
+build
+dist
 #files
