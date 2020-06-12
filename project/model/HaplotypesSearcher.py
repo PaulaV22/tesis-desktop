@@ -7,7 +7,6 @@ import shutil
 import json
 from Signal import HaploSignal
 import sys
-import MailSender as Mail
 from PySide.QtGui import *
 from PySide.QtCore import *
 
@@ -29,7 +28,6 @@ class HaplotypesSearcher(QRunnable):
         self.signals = HaploSignal()
         self.option="compare"
         self.newDb=None
-        self.mailsvc = Mail.MailSender()
         #self.dbAdmin = DB.DbAdmin()
 
     def resourcePath(self,relative_path):
@@ -44,12 +42,15 @@ class HaplotypesSearcher(QRunnable):
     def setNewDb(self,newDb):
         self.newDb=newDb
 
-    def getResults(self,queryName,queryPath, database, numSeqs):
-        simpleBlast = S.SimpleBlast("DbAmbigua", "salida", "salida", "fasta", "FinalResult", database, True)
+    def getResults(self,queryName,queryPath, database, numSeqs, ambiguo = True):
+        if ambiguo:
+            db = "DbAmbigua"
+        else:
+            db = "Blastdb"
+        simpleBlast = S.SimpleBlast(db, "salida", "salida", "fasta", "FinalResult", database, True)
         simpleBlast.align(queryPath, queryName)
-        resultsAnalizer = RA.ResultsAnalizer("FinalResult",database, self.categories,self.categoriesPath)
-
-        results = resultsAnalizer.getSimilarSequences(queryName,numSeqs)
+        resultsAnalizer = RA.ResultsAnalizer("FinalResult", database, ambiguo)
+        results = resultsAnalizer.getSimilarSequences(queryName, numSeqs)
         return results
 
     def run(self):
@@ -222,7 +223,7 @@ class HaplotypesSearcher(QRunnable):
         self.globalBlast = GC.GlobalBlast("Blastdb", "secuencias", "salida", "fasta", "BlastResult", self.db)
         self.ambiguousDbCreator = AC.AmbiguousDbCreator("BlastResult", "Nuevadb" , "salida", "fasta", "DbAmbigua", self.db)
         self.simpleBlast = S.SimpleBlast("DbAmbigua", "salida", "salida", "fasta", "FinalResult", self.db, True)
-        self.resultsAnalizer = RA.ResultsAnalizer("FinalResult",self.db, self.categories,self.categoriesPath)
+        self.resultsAnalizer = RA.ResultsAnalizer("FinalResult",self.db, True)
 
     def getProjectPath(self):
         return self.projectPath

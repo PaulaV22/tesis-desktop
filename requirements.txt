@@ -1,0 +1,4 @@
+Pyside
+Biopython==1.76
+numpy
+reportlab==2.7

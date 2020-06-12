@@ -9,6 +9,7 @@ project/Test
 venv/
 project/Categories/
 project/Databases/
-build
-dist
+build/
+dist/
 #files
+*.pdf

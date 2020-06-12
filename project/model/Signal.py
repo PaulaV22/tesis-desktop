@@ -14,3 +14,4 @@ class HaploSignal(QObject):
     deleted = Signal()
     deletedSeq = Signal()
     addedSeq = Signal()
+    aligned = Signal(object)

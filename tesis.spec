@@ -31,11 +31,6 @@ mkl_dlls = [
     os.path.join(python_path, 'evns', 'py27', 'Library', 'bin', 'mkl_def3.dll')
 ]
 
-mkl_dlls = [
-    os.path.join(python_path, 'evns', 'py35', 'Library', 'bin', 'mkl_def3.dll')
-    # others?
-]
-
 has_mkl_dlls = False
 if mkl_dlls:
     mkl_dll_base = os.path.basename(mkl_dlls[0])

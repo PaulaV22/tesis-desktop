@@ -6,6 +6,7 @@ import AddController as AC
 import DeleteController as DC
 import EditController as EC
 import CompareController as CC
+import AlignController as ALC
 import os
 
 class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
@@ -18,10 +19,12 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         self.widCompare.hide()
         self.widAddDB.hide()
         self.widDeleteDB.hide()
+        self.widAlign.hide()
         self.buttonMenuAdd.clicked.connect(self.changeToAdd)
         self.buttonMenuDelete.clicked.connect(self.changeToDelete)
         self.buttonCompare.clicked.connect(self.changeToCompare)
         self.buttonMenuEdit.clicked.connect(self.changeToEdit)
+        self.buttonMenuAlign.clicked.connect(self.changeToAlign)
         self.show()
         self.buttonMenuCompare.clicked.connect(self.changeToCompare)
         self.changeToMain()
@@ -29,16 +32,18 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         self.buttonToDelete.clicked.connect(self.changeToDelete)
         self.buttonToAdd.clicked.connect(self.changeToAdd)
         self.buttonToEdit.clicked.connect(self.changeToEdit)
+        self.buttonToAlign.clicked.connect(self.changeToAlign)
 
         self.AC = AC.AddController(self)
         self.EC = EC.EditController(self)
         self.DC = DC.DeleteController(self)
         self.CC = CC.CompareController(self)
-
+        self.ALC = ALC.AlignController(self)
         self.AC.configureView()
         self.EC.configureView()
         self.DC.configureView()
         self.CC.configureView()
+        self.ALC.configureView()
         self.setDatabases()
         self.dbName= ""
         #self.projectPath = self.AC.getProjectPath()
@@ -60,8 +65,11 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
 
     def setDatabases(self):
         self.dbList = self.AC.getDatabases()
+        self.selectDeleteDatabase.clear()
+        self.selectDatabase.clear()
         for db in self.dbList:
             self.selectDatabase.addItem(db)
+            self.selectDeleteDatabase.addItem(db)
 
     def setDatabase(self):
         selectedDb = ""
@@ -97,6 +105,7 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         self.widDeleteDB.hide()
         self.widAddDB.hide()
         self.widEditDB.hide()
+        self.widAlign.hide()
         self.widCompare.show()
 
     def changeToEdit(self):
@@ -112,6 +121,7 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         self.widDeleteDB.hide()
         self.widAddDB.hide()
         self.widCompare.hide()
+        self.widAlign.hide()
         self.widEditDB.show()
 
     def changeToAdd(self):
@@ -127,6 +137,7 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         self.buttonToDelete.show()
         self.buttonToEdit.setEnabled(True)
         self.widEditDB.hide()
+        self.widAlign.hide()
         self.buttonToEdit.show()
 
     def changeToDelete(self):
@@ -142,6 +153,7 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         self.buttonToDelete.show()
         self.buttonToEdit.setEnabled(True)
         self.widEditDB.hide()
+        self.widAlign.hide()
         self.buttonToEdit.show()
 
     def changeToMain(self):
@@ -156,6 +168,25 @@ class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
         self.buttonToDelete.hide()
         self.buttonToEdit.setEnabled(True)
         self.buttonToEdit.hide()
+        self.buttonToAlign.setEnabled(True)
+        self.buttonToAlign.hide()
         self.widEditDB.hide()
+        self.widAlign.hide()
         self.widMainMenu.show()
 
+
+    def changeToAlign(self):
+        self.buttonToAdd.setEnabled(True)
+        self.buttonToAdd.show()
+        self.buttonToCompare.setEnabled(False)
+        self.buttonToCompare.show()
+        self.buttonToDelete.setEnabled(True)
+        self.buttonToDelete.show()
+        self.buttonToEdit.setEnabled(True)
+        self.buttonToEdit.show()
+        self.widMainMenu.hide()
+        self.widDeleteDB.hide()
+        self.widAddDB.hide()
+        self.widEditDB.hide()
+        self.widCompare.hide()
+        self.widAlign.show()

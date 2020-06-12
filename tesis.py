@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 from project.Controller import *
 from project.model import *

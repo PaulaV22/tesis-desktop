@@ -5,7 +5,7 @@ import sys
 class Controller():
     def __init__(self, window):
         self.window = window
-        #self.projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.HS = HaplotypeSearcher.HaplotypesSearcher()
         self.dbList = self.getDatabases()
         self.dbName =""
