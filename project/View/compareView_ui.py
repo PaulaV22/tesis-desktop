@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'compareView.ui'
 #
-# Created: Sun Jun  7 20:31:13 2020
+# Created: Sat Jun 13 21:15:42 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,7 +25,7 @@ class Ui_mainWindow(object):
         self.labelFiles.setGeometry(QtCore.QRect(60, 50, 70, 21))
         self.labelFiles.setObjectName("labelFiles")
         self.dbFilesTree = QtGui.QTreeView(self.centralwidget)
-        self.dbFilesTree.setGeometry(QtCore.QRect(60, 80, 771, 791))
+        self.dbFilesTree.setGeometry(QtCore.QRect(60, 80, 761, 791))
         self.dbFilesTree.setObjectName("dbFilesTree")
         self.widMainMenu = QtGui.QWidget(self.centralwidget)
         self.widMainMenu.setGeometry(QtCore.QRect(880, -20, 1051, 961))
@@ -110,16 +110,16 @@ class Ui_mainWindow(object):
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.buttonToCompare = QtGui.QPushButton(self.centralwidget)
-        self.buttonToCompare.setGeometry(QtCore.QRect(60, 900, 144, 34))
+        self.buttonToCompare.setGeometry(QtCore.QRect(60, 900, 141, 34))
         self.buttonToCompare.setObjectName("buttonToCompare")
         self.buttonToAdd = QtGui.QPushButton(self.centralwidget)
-        self.buttonToAdd.setGeometry(QtCore.QRect(208, 900, 151, 34))
+        self.buttonToAdd.setGeometry(QtCore.QRect(220, 900, 151, 34))
         self.buttonToAdd.setObjectName("buttonToAdd")
         self.buttonToEdit = QtGui.QPushButton(self.centralwidget)
-        self.buttonToEdit.setGeometry(QtCore.QRect(367, 900, 151, 34))
+        self.buttonToEdit.setGeometry(QtCore.QRect(380, 900, 151, 34))
         self.buttonToEdit.setObjectName("buttonToEdit")
         self.buttonToDelete = QtGui.QPushButton(self.centralwidget)
-        self.buttonToDelete.setGeometry(QtCore.QRect(526, 900, 151, 34))
+        self.buttonToDelete.setGeometry(QtCore.QRect(540, 900, 151, 34))
         self.buttonToDelete.setObjectName("buttonToDelete")
         self.widEditDB = QtGui.QWidget(self.centralwidget)
         self.widEditDB.setEnabled(True)
@@ -165,10 +165,10 @@ class Ui_mainWindow(object):
         self.widAlign.setProperty("hidden", True)
         self.widAlign.setObjectName("widAlign")
         self.buttonSeeAlignment = QtGui.QToolButton(self.widAlign)
-        self.buttonSeeAlignment.setGeometry(QtCore.QRect(470, 920, 131, 41))
+        self.buttonSeeAlignment.setGeometry(QtCore.QRect(470, 800, 131, 41))
         self.buttonSeeAlignment.setObjectName("buttonSeeAlignment")
         self.buttonAlign = QtGui.QPushButton(self.widAlign)
-        self.buttonAlign.setGeometry(QtCore.QRect(470, 800, 112, 41))
+        self.buttonAlign.setGeometry(QtCore.QRect(470, 800, 131, 41))
         self.buttonAlign.setObjectName("buttonAlign")
         self.progressBar_5 = QtGui.QProgressBar(self.widAlign)
         self.progressBar_5.setGeometry(QtCore.QRect(80, 420, 951, 23))
@@ -214,7 +214,7 @@ class Ui_mainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(730, 40, 171, 21))
         self.label_2.setObjectName("label_2")
         self.buttonToAlign = QtGui.QPushButton(self.centralwidget)
-        self.buttonToAlign.setGeometry(QtCore.QRect(683, 900, 151, 34))
+        self.buttonToAlign.setGeometry(QtCore.QRect(700, 900, 141, 34))
         self.buttonToAlign.setObjectName("buttonToAlign")
         mainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(mainWindow)
@@ -247,10 +247,10 @@ class Ui_mainWindow(object):
         self.labelProcessDelete.setText(QtGui.QApplication.translate("mainWindow", "Importando archivos", None, QtGui.QApplication.UnicodeUTF8))
         self.buttonDelete.setText(QtGui.QApplication.translate("mainWindow", "Eliminar base de datos", None, QtGui.QApplication.UnicodeUTF8))
         self.labelAskDelete.setText(QtGui.QApplication.translate("mainWindow", "¿Esta seguro que desea eliminar la base de datos? ", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonToCompare.setText(QtGui.QApplication.translate("mainWindow", "Encontrar alelos", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonToAdd.setText(QtGui.QApplication.translate("mainWindow", "Agregar base de datos", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonToEdit.setText(QtGui.QApplication.translate("mainWindow", "Editar base de datos", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonToDelete.setText(QtGui.QApplication.translate("mainWindow", "Eliminar base de datos", None, QtGui.QApplication.UnicodeUTF8))
+        self.buttonToCompare.setText(QtGui.QApplication.translate("mainWindow", "Comparar", None, QtGui.QApplication.UnicodeUTF8))
+        self.buttonToAdd.setText(QtGui.QApplication.translate("mainWindow", "Agregar Database", None, QtGui.QApplication.UnicodeUTF8))
+        self.buttonToEdit.setText(QtGui.QApplication.translate("mainWindow", "Editar Database", None, QtGui.QApplication.UnicodeUTF8))
+        self.buttonToDelete.setText(QtGui.QApplication.translate("mainWindow", "Eliminar Database", None, QtGui.QApplication.UnicodeUTF8))
         self.buttonDeleteSeq.setText(QtGui.QApplication.translate("mainWindow", "Borrar secuencia", None, QtGui.QApplication.UnicodeUTF8))
         self.labelEditProcess.setText(QtGui.QApplication.translate("mainWindow", "Creando archivos", None, QtGui.QApplication.UnicodeUTF8))
         self.buttonAddSeq.setText(QtGui.QApplication.translate("mainWindow", "Agregar secuencia", None, QtGui.QApplication.UnicodeUTF8))
@@ -264,5 +264,5 @@ class Ui_mainWindow(object):
         self.buttonCompare.setText(QtGui.QApplication.translate("mainWindow", "Comparar", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("mainWindow", "Ingrese la secuencia a comparar", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("mainWindow", "Cantidad de resultados", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonToAlign.setText(QtGui.QApplication.translate("mainWindow", "Alinear secuencias", None, QtGui.QApplication.UnicodeUTF8))
+        self.buttonToAlign.setText(QtGui.QApplication.translate("mainWindow", "Alinear", None, QtGui.QApplication.UnicodeUTF8))
 

@@ -55,7 +55,7 @@
      <rect>
       <x>60</x>
       <y>80</y>
-      <width>771</width>
+      <width>761</width>
       <height>791</height>
      </rect>
     </property>
@@ -376,51 +376,51 @@
      <rect>
       <x>60</x>
       <y>900</y>
-      <width>144</width>
+      <width>141</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>Encontrar alelos</string>
+     <string>Comparar</string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonToAdd">
     <property name="geometry">
      <rect>
-      <x>208</x>
+      <x>220</x>
       <y>900</y>
       <width>151</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>Agregar base de datos</string>
+     <string>Agregar Database</string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonToEdit">
     <property name="geometry">
      <rect>
-      <x>367</x>
+      <x>380</x>
       <y>900</y>
       <width>151</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>Editar base de datos</string>
+     <string>Editar Database</string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonToDelete">
     <property name="geometry">
      <rect>
-      <x>526</x>
+      <x>540</x>
       <y>900</y>
       <width>151</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>Eliminar base de datos</string>
+     <string>Eliminar Database</string>
     </property>
    </widget>
    <widget class="QWidget" name="widEditDB" native="true">
@@ -574,7 +574,7 @@
      <property name="geometry">
       <rect>
        <x>470</x>
-       <y>920</y>
+       <y>800</y>
        <width>131</width>
        <height>41</height>
       </rect>
@@ -588,7 +588,7 @@
       <rect>
        <x>470</x>
        <y>800</y>
-       <width>112</width>
+       <width>131</width>
        <height>41</height>
       </rect>
      </property>
@@ -757,14 +757,14 @@
    <widget class="QPushButton" name="buttonToAlign">
     <property name="geometry">
      <rect>
-      <x>683</x>
+      <x>700</x>
       <y>900</y>
-      <width>151</width>
+      <width>141</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>Alinear secuencias</string>
+     <string>Alinear</string>
     </property>
    </widget>
    <zorder>widEditDB</zorder>
