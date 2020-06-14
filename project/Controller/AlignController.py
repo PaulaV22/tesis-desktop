@@ -9,12 +9,17 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 import subprocess
 import os
+import random
+import string
+import time
 
 class AlignController(Controller):
 
     def __init__(self,window):
         Controller.__init__(self,window)
         self.threadPool = QThreadPool()
+        self.docName=""
+        self.maxTries=3
 
     def configureView(self):
         self.window.buttonAlign.clicked.connect(self.align)
@@ -36,6 +41,8 @@ class AlignController(Controller):
 
 
     def align(self):
+        if (self.docName and os.path.exists(self.docName)):
+            os.remove(self.docName)
         self.window.buttonAlign.hide()
         self.window.progressBar_5.show()
         self.window.buttonAlign.repaint()
@@ -44,18 +51,30 @@ class AlignController(Controller):
         inputSequence2 = self.window.sequenceInput2.toPlainText()
 
         seq1Name = inputSequence1.partition('\n')[0]
-        seq1Name = ''.join(e for e in seq1Name if e.isalnum())
-        seq1Name = seq1Name + ".fa"
+        self.seq1Name = ''.join(e for e in seq1Name if e.isalnum())
+        seq1NameComplete = seq1Name + ".fa"
+
+        seq2Name = inputSequence2.partition('\n')[0]
+        self.seq2Name = ''.join(e for e in seq2Name if e.isalnum())
+
         self.aligner = Aligner.Aligner()
         self.aligner.setProjectPath(self.getProjectPath())
-        self.aligner.setSequences(seq1Name, inputSequence1, inputSequence2)
+        self.aligner.setSequences(self.seq1Name, inputSequence1, inputSequence2)
         self.aligner.signals.aligned.connect(self.showAlignment)
 
         tempFile = self.HS.getProjectPath()+"/tmp.fa"
+        if os.path.exists(tempFile):
+            os.remove(tempFile)
         file = open(tempFile, "w+")
         file.write(inputSequence1)
+        while not os.path.exists(tempFile):
+            time.sleep(1)
         file.close()
-        self.threadPool.start(self.aligner)
+
+        try:
+            self.threadPool.start(self.aligner)
+        except Exception as e:
+            print(e)
         #self.HS.searchHaplotypes("tmp.fa", self.numSeqs)
 
 
@@ -64,10 +83,6 @@ class AlignController(Controller):
         self.results = results
         self.showResults()
         self.window.buttonSeeAlignment.setVisible(True)
-
-
-
-
 
     def dbReady(self):
         self.setDatabases()
@@ -193,16 +208,19 @@ class AlignController(Controller):
         print(self.rows1)
         print(self.rows2)
 
+    def randomString(self, stringLength=8):
+        letters = string.ascii_lowercase
+        return ''.join(random.choice(letters) for i in range(stringLength))
+
+
     def downloadPDF(self):
-        if os.path.exists("output.pdf"):
-            os.remove("output.pdf")
-        doc = SimpleDocTemplate("output.pdf", pagesize=letter)
+        docId = self.seq1Name +"_"+self.seq2Name
+        self.docName = docId + ".pdf"
+        if os.path.exists(self.docName):
+            os.remove(self.docName)
+        doc = SimpleDocTemplate(self.docName, pagesize=letter)
         # container for the 'Flowable' objects
         elements = []
-        data= [['00', '01', '02', '03', '04'],
-        ['10', '11', '12', '13', '14'],
-        ['20', '21', '22', '23', '24'],
-        ['30', '31', '32', '33', '34']]
         t1 = Table(self.rows1)
         t1.setStyle(TableStyle([(('FONTNAME', (0, 0), (-1, -1), 'Courier'))]))
         elements.append(t1)
@@ -212,4 +230,8 @@ class AlignController(Controller):
         elements.append(t2)
         # write the document to disk
         doc.build(elements)
-        subprocess.Popen(["output.pdf"], shell=True)
+        subprocess.Popen([self.docName], shell=True)
+        self.window.sequenceInput1.setPlainText("")
+        self.window.sequenceInput2.setPlainText("")
+        self.window.buttonSeeAlignment.setVisible(False)
+        self.window.buttonAlign.setVisible(True)

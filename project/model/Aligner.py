@@ -11,6 +11,7 @@ from PySide.QtGui import *
 from PySide.QtCore import *
 import SimpleDbCreator as SC
 import HaplotypesSearcher as HaplotypesSearcher
+import time
 
 class Aligner(QRunnable):
 
@@ -34,6 +35,9 @@ class Aligner(QRunnable):
             shutil.rmtree(dbPath)
         os.makedirs(dbPath)
         seq1Path = dbPath + "/" + self.seq1Name
+        while not os.path.exists(dbPath):
+            time.sleep(1)
+
         file = open(seq1Path, 'w+')
         file.write(self.seq1Content)
         file.close()
@@ -43,7 +47,7 @@ class Aligner(QRunnable):
 
         results = self.align()
         print(results)
-        self.HS.deleteDb(dbPath,True)
+        self.HS.deleteDb(self.db,True)
         print("Aligner.py Temporal align db deleted")
 
         self.signals.aligned.emit(results)

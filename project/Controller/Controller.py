@@ -1,6 +1,7 @@
 import os
 from project.model import HaplotypesSearcher as HaplotypeSearcher
 import sys
+from PySide import QtGui
 
 class Controller():
     def __init__(self, window):
