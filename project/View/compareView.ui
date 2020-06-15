@@ -668,19 +668,6 @@
       </rect>
      </property>
     </widget>
-    <widget class="QToolButton" name="buttonDownload">
-     <property name="geometry">
-      <rect>
-       <x>480</x>
-       <y>900</y>
-       <width>111</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Descargar</string>
-     </property>
-    </widget>
     <widget class="QTableView" name="tableResults">
      <property name="geometry">
       <rect>
@@ -769,7 +756,6 @@
    </widget>
    <zorder>widEditDB</zorder>
    <zorder>widDeleteDB</zorder>
-   <zorder>widCompare</zorder>
    <zorder>widAddDB</zorder>
    <zorder>widMainMenu</zorder>
    <zorder>labelDatabase</zorder>
@@ -782,6 +768,7 @@
    <zorder>buttonToDelete</zorder>
    <zorder>buttonToAlign</zorder>
    <zorder>widAlign</zorder>
+   <zorder>widCompare</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

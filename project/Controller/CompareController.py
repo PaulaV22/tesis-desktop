@@ -3,6 +3,7 @@ from PySide.QtCore import *
 import numpy as np
 from Controller import Controller
 import json
+from project.model import HaplotypesSearcher as HaplotypeSearcher
 
 class CustomTableModel(QAbstractTableModel):
     def __init__(self, data=None):
@@ -37,7 +38,7 @@ class CustomTableModel(QAbstractTableModel):
         if role != Qt.DisplayRole:
             return None
         if orientation == Qt.Horizontal:
-            return ("Combinacion", "Score", "E-Value","% Similitud")[section]
+            return ("Combinacion", "Score", "E-Value","Similitud")[section]
         else:
             return "{}".format(section)
 
@@ -125,6 +126,7 @@ class CompareController(Controller):
         self.window.buttonCompare.repaint()
         self.window.progressBar.repaint()
         inputSequence = self.window.sequenceInput.toPlainText()
+        self.HS = HaplotypeSearcher.HaplotypesSearcher(self.dbName)
         self.HS.setDb(self.dbName)
         self.HS.signals.result.connect(self.showResults)
         tempFile = self.HS.getProjectPath()+"/tmp.fa"

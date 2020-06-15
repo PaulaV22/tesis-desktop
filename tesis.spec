@@ -61,7 +61,6 @@ added_files=[('./project/Blastdb','Blastdb'),
 ('./project/Categories','BlastResult'),
 ('./project/Databases','Databases'),
 ('./project/DbAmbigua','DbAmbigua'),
-('./project/FinalResult','FinalResult'),
 ('./project/Test','Test'),
 ('./project/tmp.fa','.'),
 ('./project/View', 'View')

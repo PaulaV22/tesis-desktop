@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'compareView.ui'
 #
-# Created: Sat Jun 13 21:15:42 2020
+# Created: Sun Jun 14 19:46:08 2020
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -191,9 +191,6 @@ class Ui_mainWindow(object):
         self.resultLenghtSpin = QtGui.QSpinBox(self.widCompare)
         self.resultLenghtSpin.setGeometry(QtCore.QRect(920, 40, 54, 27))
         self.resultLenghtSpin.setObjectName("resultLenghtSpin")
-        self.buttonDownload = QtGui.QToolButton(self.widCompare)
-        self.buttonDownload.setGeometry(QtCore.QRect(480, 900, 111, 41))
-        self.buttonDownload.setObjectName("buttonDownload")
         self.tableResults = QtGui.QTableView(self.widCompare)
         self.tableResults.setGeometry(QtCore.QRect(80, 500, 901, 381))
         self.tableResults.setObjectName("tableResults")
@@ -260,7 +257,6 @@ class Ui_mainWindow(object):
         self.buttonSeeAlignment.setText(QtGui.QApplication.translate("mainWindow", "Ver Alineación ", None, QtGui.QApplication.UnicodeUTF8))
         self.buttonAlign.setText(QtGui.QApplication.translate("mainWindow", "Alinear", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("mainWindow", "Ingrese las secuencias a alinear", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonDownload.setText(QtGui.QApplication.translate("mainWindow", "Descargar", None, QtGui.QApplication.UnicodeUTF8))
         self.buttonCompare.setText(QtGui.QApplication.translate("mainWindow", "Comparar", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("mainWindow", "Ingrese la secuencia a comparar", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("mainWindow", "Cantidad de resultados", None, QtGui.QApplication.UnicodeUTF8))

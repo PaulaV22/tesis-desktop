@@ -54,10 +54,12 @@ class ResultsAnalizer():
                     id = hsp.hit.id
                     score = hsp.bitscore
                     evalue = hsp.evalue
-                    positives = hsp.pos_num
-                    align_length = hsp.aln_span
-                    percent = float("{0:.3f}".format(positives/align_length))
-
+                    if not hasattr(hsp, 'pos_num'):
+                        percent = 1
+                    else:
+                        positives = hsp.pos_num
+                        align_length = hsp.aln_span
+                        percent = float("{0:.3f}".format(positives/align_length))
                     complementary = ""
                     if self.ambiguo:
                         id = self.getStandarName(id)
@@ -65,7 +67,7 @@ class ResultsAnalizer():
                     alignment = hsp.fragment.aln
                     if not (complementary in sequences.keys()):
                         # sequences[id] = [score * weight, evalue, positives, align_length, percent*weight]
-                        sequences[id] = [score, evalue, positives, align_length, percent, alignment.format("fasta"),
+                        sequences[id] = [score, evalue, align_length, percent, alignment.format("fasta"),
                                          hsp.query_start, hsp.hit_start]
         n = 0
         salida = []
@@ -73,8 +75,8 @@ class ResultsAnalizer():
             if (n<int(number)):
                 value.insert(0, key)
                 print(value)
-                data = {'id': value[0], 'score': value[1], 'evalue': value[2], 'similarity': value[5],
-                        'alignment': value[6], 'queryStart': value[7], 'hitStart': value[8]}
+                data = {'id': value[0], 'score': value[1], 'evalue': value[2], 'similarity': value[4],
+                        'alignment': value[5], 'queryStart': value[6], 'hitStart': value[7]}
                 salida.append(data)
             n = n +1
         #print(salida)

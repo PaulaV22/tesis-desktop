@@ -46,11 +46,9 @@ class Aligner(QRunnable):
         simpleDbCreator.makeDb()
 
         results = self.align()
-        print(results)
-        self.HS.deleteDb(self.db,True)
-        print("Aligner.py Temporal align db deleted")
-
         self.signals.aligned.emit(results)
+        self.HS.deleteDb(self.db)
+        self.signals.alignedDeleted.emit()
         return results
 
 

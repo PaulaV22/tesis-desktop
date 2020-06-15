@@ -29,8 +29,6 @@ class AlignController(Controller):
         self.window.buttonSeeAlignment.setVisible(False)
         self.window.buttonSeeAlignment.clicked.connect(self.downloadPDF)
         # self.HS.signals.result.__call__(self.showResults)
-        self.HS.signals.updatedatabases.connect(self.dbReady)
-        self.HS.signals.aligned.connect(self.showAlignment)
 
     def setSequences(self, seq1Name, seq1Content, seq2Name, seq2Content):
         self.db = "align"
@@ -61,6 +59,7 @@ class AlignController(Controller):
         self.aligner.setProjectPath(self.getProjectPath())
         self.aligner.setSequences(self.seq1Name, inputSequence1, inputSequence2)
         self.aligner.signals.aligned.connect(self.showAlignment)
+        self.aligner.signals.alignedDeleted.connect(self.dbReady)
 
         tempFile = self.HS.getProjectPath()+"/tmp.fa"
         if os.path.exists(tempFile):
