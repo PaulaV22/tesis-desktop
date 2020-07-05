@@ -1,5 +1,5 @@
 # Don't track content of these folders
-project/Blastdb/
+project/Blastdb/*
 project/BlastResult/
 project/DbAmbigua/
 project/FinalResult/

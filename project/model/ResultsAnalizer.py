@@ -71,7 +71,8 @@ class ResultsAnalizer():
                                          hsp.query_start, hsp.hit_start]
         n = 0
         salida = []
-        for key, value in sorted(sequences.items(), key=lambda item: item[1][4], reverse=True):
+        #for key, value in sorted(sequences.items(), key=lambda item: item[1][4], reverse=True):
+        for key, value in sorted(sequences.items(), key=lambda item: item[1][3], reverse=True):
             if (n<int(number)):
                 value.insert(0, key)
                 print(value)

@@ -2,11 +2,11 @@ import sys
 from PySide import QtCore as QtCore
 from PySide import QtGui as QtGui
 from project.View.compareView_ui import Ui_mainWindow
-import AddController as AC
-import DeleteController as DC
-import EditController as EC
-import CompareController as CC
-import AlignController as ALC
+import project.Controller.AddController as AC
+import project.Controller.DeleteController as DC
+import project.Controller.EditController as EC
+import project.Controller.CompareController as CC
+import project.Controller.AlignController as ALC
 import os
 
 class MainWindow(QtGui.QMainWindow, Ui_mainWindow):
