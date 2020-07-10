@@ -1,6 +1,7 @@
 from PySide.QtCore import *
 from Controller import Controller
 from project.model import HaplotypesSearcher as HaplotypeSearcher
+from project.model import DbAdmin as DbAdmin
 
 class DeleteController(Controller):
 
@@ -22,18 +23,6 @@ class DeleteController(Controller):
         self.setDatabases()
 
 
-    def setDatabasesOptions(self):
-        self.dbList = self.getDatabases()
-        for db in self.dbList:
-            self.window.selectDeleteDatabase.addItem(db)
-
-    def removeItem(self):
-        self.dbList = self.getDatabases()
-        index = self.window.selectDeleteDatabase.findText(self.selectedDbName)
-        self.window.selectDeleteDatabase.removeItem(index)
-        self.window.selectDatabase.removeItem(index)
-
-
     def showWidget(self):
         self.window.labelProcessDelete.hide()
         selectedIndex = self.window.selectDeleteDatabase.currentIndex()
@@ -48,10 +37,10 @@ class DeleteController(Controller):
         self.window.labelProcessDelete.setText("Eliminando la base de datos")
         self.window.labelProcessDelete.show()
         self.window.progressBar_3.show()
-        self.HS = HaplotypeSearcher.HaplotypesSearcher(self.selectedDbName)
-        self.HS.signals.deleted.connect(self.deletedDb)
-        self.HS.setOption("deletedb")
-        self.threadPool.start(self.HS)
+        self.dbAdmin = DbAdmin.DbAdmin(self.selectedDbName)
+        self.dbAdmin.signals.deleted.connect(self.deletedDb)
+        self.dbAdmin.setOption("deletedb")
+        self.threadPool.start(self.dbAdmin)
 
     def deletedDb(self):
         self.hideWidget()

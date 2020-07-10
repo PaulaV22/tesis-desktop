@@ -1,5 +1,6 @@
 import os
 from project.model import HaplotypesSearcher as HaplotypeSearcher
+from project.model import DbAdmin as DbAdmin
 import sys
 from PySide import QtGui
 
@@ -8,6 +9,7 @@ class Controller():
         self.window = window
         self.projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.HS = HaplotypeSearcher.HaplotypesSearcher()
+        self.dbAdmin = DbAdmin.DbAdmin()
         self.dbList = self.getDatabases()
         self.dbName =""
 
@@ -48,3 +50,6 @@ class Controller():
         for db in self.dbList:
             self.window.selectDatabase.addItem(db)
             self.window.selectDeleteDatabase.addItem(db)
+
+    def configureView(self):
+        pass

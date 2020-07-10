@@ -64,22 +64,7 @@ class HaplotypesSearcher(QRunnable):
             self.signals.result.emit(results)
             return results
             #return results
-        if self.option=="configuredb":
-            try:
-                self.configureDb(self.newDb)
-                self.signals.database.emit("finished")
-                self.signals.updatedatabases.emit()
-            except:
-                self.signals.database.emit("error")
-        if self.option=="deletedb":
-            self.deleteDb(self.db)
-            self.signals.deleted.emit()
-        if self.option=="deleteSeq":
-            self.deleteSeq(self.db, self.sequenceToDelete)
-            self.signals.deletedSeq.emit()
-        if self.option=="addSeq":
-            self.addSeq(self.path,self.db,self.newSeqName, self.newSeqContent)
-            self.signals.addedSeq.emit()
+
 
     def searchHaplotypes(self, queryName, numSeq):
         queryPath = self.projectPath + "/" + queryName
@@ -88,14 +73,6 @@ class HaplotypesSearcher(QRunnable):
         self.simpleBlast.align(queryPath, queryName)
         self.resultsAnalizer.getSimilarSequences(queryName, numSeq)
         print ("fin")
-
-    def setAddSeqValues(self, path, content,name):
-        self.path = path
-        self.newSeqContent = content
-        self.newSeqName = name
-
-    def setSequenceToDelete(self, seqPath):
-        self.sequenceToDelete = seqPath
 
     def setQueryData(self,queryName, numSeqs):
         self.queryName = queryName
@@ -116,78 +93,6 @@ class HaplotypesSearcher(QRunnable):
     def deleteseqAdmin (self, db, sequence):
         self.dbAdmin.deleteSequence(self.projectPath,db,sequence)
 
-    def configureDb(self, db):
-        ####crear la bd con los archivos originales de BoLa####
-        ready = False
-        self.simpleDbCreator.makeDb()
-        ####alinear todas las secuencias de BoLa entre si generando un archivo de salida por cada alineacion (n x n)####
-        while not ready:
-            try:
-                self.globalBlast.align("/Databases/"+db)
-                ready = True
-            except:
-                self.simpleDbCreator.makeDb()
-                ready = False
-        ####armar la base de datos con las posibles combinaciones (Nuevadb)####
-        self.ambiguousDbCreator.makeDb()
-        categories = {}
-        #categoriesFile = self.projectPath + "/Categories/" + db + ".json"
-        categoriesFile = self.resourcePath("/Categories/" + db + ".json")
-
-        with open(categoriesFile, mode='w+') as f:
-            json.dump(categories, f)
-
-    def restartDb(self,db):
-        self.deleteDb(db, False)
-        self.configureDb(db)
-
-    def deleteDb(self,db,total=True):
-        Database = self.resourcePath('/Databases/' + db)
-        BlastDb = self.resourcePath('/BlastDb/' + db)
-        BlastResult = self.resourcePath('/BlastResult/' + db)
-        DbAmbigua = self.resourcePath('/DbAmbigua/' + db)
-        FinalResult = self.resourcePath('/FinalResult/' + db)
-        if total:
-            try:
-                shutil.rmtree(Database)
-            except:
-                pass
-        try:
-            shutil.rmtree(BlastDb)
-        except:
-            pass
-        try:
-            shutil.rmtree(BlastResult)
-        except:
-            pass
-        try:
-            shutil.rmtree(DbAmbigua)
-        except:
-            pass
-        try:
-            shutil.rmtree(FinalResult)
-        except:
-            pass
-        try:
-            os.remove(self.resourcePath("/Categories/"+db+".json"))
-        except:
-            print("Error in a deletion")
-
-    def deleteSeq(self, db, seqPath):
-        try:
-            os.remove(seqPath)
-            self.restartDb(db)
-        except:
-            print("La carpeta no existe")
-        self.configureDb(db)
-
-
-    def addSeq(self, path,db, name, seq):
-        file = open(path+"/"+name+".fa", "w")
-        file.write(">"+name + os.linesep)
-        file.write(seq)
-        file.close()
-        self.restartDb(db)
 
     def setCategoryToFilesInDb(self, db, folder, category):
         folderPath = self.resourcePath("/Databases/"+db+"/"+folder)

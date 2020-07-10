@@ -12,6 +12,7 @@ from PySide.QtCore import *
 import SimpleDbCreator as SC
 import HaplotypesSearcher as HaplotypesSearcher
 import time
+from project.model import DbAdmin as DbAdmin
 
 class Aligner(QRunnable):
 
@@ -47,7 +48,8 @@ class Aligner(QRunnable):
 
         results = self.align()
         self.signals.aligned.emit(results)
-        self.HS.deleteDb(self.db)
+        self.dbAdmin = DbAdmin.DbAdmin(self.db)
+        self.dbAdmin.deleteDb(self.db)
         self.signals.alignedDeleted.emit()
         return results
 

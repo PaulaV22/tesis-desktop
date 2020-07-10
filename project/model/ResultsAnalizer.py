@@ -67,7 +67,7 @@ class ResultsAnalizer():
                     alignment = hsp.fragment.aln
                     if not (complementary in sequences.keys()):
                         # sequences[id] = [score * weight, evalue, positives, align_length, percent*weight]
-                        sequences[id] = [score, evalue, align_length, percent, alignment.format("fasta"),
+                        sequences[id] = [score, evalue, percent, alignment.format("fasta"),
                                          hsp.query_start, hsp.hit_start]
         n = 0
         salida = []
@@ -76,8 +76,8 @@ class ResultsAnalizer():
             if (n<int(number)):
                 value.insert(0, key)
                 print(value)
-                data = {'id': value[0], 'score': value[1], 'evalue': value[2], 'similarity': value[4],
-                        'alignment': value[5], 'queryStart': value[6], 'hitStart': value[7]}
+                data = {'id': value[0], 'score': value[1], 'evalue': value[2], 'similarity': value[3],
+                        'alignment': value[4], 'queryStart': value[5], 'hitStart': value[6]}
                 salida.append(data)
             n = n +1
         #print(salida)

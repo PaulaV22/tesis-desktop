@@ -1,6 +1,7 @@
 import os
 from PySide.QtCore import *
 from project.model import HaplotypesSearcher as HaplotypesSearcher
+from project.model import DbAdmin as DbAdmin
 from Controller import Controller
 
 class EditController(Controller):
@@ -19,7 +20,7 @@ class EditController(Controller):
         self.window.buttonAddSeq.setEnabled(False)
         self.window.progressBar_4.hide()
         self.window.labelEditProcess.hide()
-        self.window.dbFilesTree.doubleClicked.connect(self.configure)
+        self.window.dbFilesTree.doubleClicked.connect(self.setSelectedSeq)
         self.window.selectDatabase.currentIndexChanged.connect(self.changeDb)
         self.window.buttonDeleteSeq.clicked.connect(self.deleteSeq)
         self.window.buttonAddSeq.clicked.connect(self.addSeq)
@@ -42,7 +43,7 @@ class EditController(Controller):
     def setFileModel(self,filemodel):
         self.filemodel = filemodel
 
-    def configure(self):
+    def setSelectedSeq(self):
         index = self.window.dbFilesTree.currentIndex()
         path = (self.filemodel.filePath(index))
         path2 = path.replace(" ","_")
@@ -113,11 +114,11 @@ class EditController(Controller):
         self.window.progressBar_4.repaint()
         self.window.labelEditProcess.setText("Eliminando secuencia")
         self.window.labelEditProcess.show()
-        self.HS = HaplotypesSearcher.HaplotypesSearcher(self.dbName)
-        self.HS.signals.deletedSeq.connect(self.dbReady)
-        self.HS.setOption("deleteSeq")
-        self.HS.setSequenceToDelete(self.toDelete)
-        self.threadPool.start(self.HS)
+        self.dbAdmin = DbAdmin.DbAdmin(dbName)
+        self.dbAdmin.signals.deletedSeq.connect(self.dbReady)
+        self.dbAdmin.setOption("deleteSeq")
+        self.dbAdmin.setSequenceToDelete(self.toDelete)
+        self.threadPool.start(self.dbAdmin)
 
     def newSeqReady(self):
         self.window.progressBar_4.hide()
@@ -132,9 +133,8 @@ class EditController(Controller):
         self.window.progressBar_4.repaint()
         self.window.labelEditProcess.setText("Agregando secuencia")
         self.window.labelEditProcess.show()
-        self.HS =HaplotypeSearcher.HaplotypesSearcher(dbName)
-        self.HS.setDb(dbName)
-        self.HS.signals.addedSeq.connect(self.newSeqReady)
-        self.HS.setOption("addSeq")
-        self.HS.setAddSeqValues(self.path, self.content, self.seqName)
-        self.threadPool.start(self.HS)
+        self.dbAdmin = DbAdmin.DbAdmin(dbName)
+        self.dbAdmin.signals.addedSeq.connect(self.newSeqReady)
+        self.dbAdmin.setOption("addSeq")
+        self.dbAdmin.setAddSeqValues(self.path, self.content, self.seqName)
+        self.threadPool.start(self.dbAdmin)

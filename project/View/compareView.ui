@@ -60,81 +60,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="widMainMenu" native="true">
-    <property name="geometry">
-     <rect>
-      <x>880</x>
-      <y>-20</y>
-      <width>1051</width>
-      <height>961</height>
-     </rect>
-    </property>
-    <widget class="QToolButton" name="buttonMenuEdit">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>270</y>
-       <width>330</width>
-       <height>45</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Editar base de datos</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="buttonMenuCompare">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>200</y>
-       <width>330</width>
-       <height>45</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Encontrar alelos en una base de datos</string>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="buttonMenuDelete">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>410</y>
-       <width>330</width>
-       <height>45</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Eliminar base de datos</string>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="buttonMenuAdd">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>340</y>
-       <width>330</width>
-       <height>45</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Agregar base de datos</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="buttonMenuAlign">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>480</y>
-       <width>330</width>
-       <height>45</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Alinear dos secuencias</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QWidget" name="widAddDB" native="true">
     <property name="enabled">
      <bool>true</bool>
@@ -448,7 +373,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Borrar secuencia</string>
+      <string>Eliminar secuencia</string>
      </property>
     </widget>
     <widget class="QProgressBar" name="progressBar_4">
@@ -754,10 +679,83 @@
      <string>Alinear</string>
     </property>
    </widget>
-   <zorder>widEditDB</zorder>
+   <widget class="QWidget" name="widMainMenu" native="true">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>0</y>
+      <width>1051</width>
+      <height>961</height>
+     </rect>
+    </property>
+    <widget class="QToolButton" name="buttonMenuEdit">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>430</y>
+       <width>401</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Editar base de datos</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonMenuCompare">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>270</y>
+       <width>401</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Comparar secuencia con una base de datos</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="buttonMenuDelete">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>510</y>
+       <width>401</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Eliminar base de datos</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="buttonMenuAdd">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>350</y>
+       <width>401</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Agregar base de datos</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonMenuAlign">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>590</y>
+       <width>401</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Alinear dos secuencias</string>
+     </property>
+    </widget>
+   </widget>
    <zorder>widDeleteDB</zorder>
    <zorder>widAddDB</zorder>
-   <zorder>widMainMenu</zorder>
    <zorder>labelDatabase</zorder>
    <zorder>selectDatabase</zorder>
    <zorder>labelFiles</zorder>
@@ -769,6 +767,8 @@
    <zorder>buttonToAlign</zorder>
    <zorder>widAlign</zorder>
    <zorder>widCompare</zorder>
+   <zorder>widEditDB</zorder>
+   <zorder>widMainMenu</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

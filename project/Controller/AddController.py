@@ -6,6 +6,7 @@ import os
 import shutil
 from Controller import Controller
 from project.model import HaplotypesSearcher as HaplotypesSearcher
+from project.model import DbAdmin as DbAdmin
 
 class AddController(Controller):
 
@@ -78,12 +79,11 @@ class AddController(Controller):
                     shutil.copy2(sequenceOrigin, sequenceDest)
                     print("Archivo copiado")
         self.window.labelProcess.setText("Configurando bases de datos en el sistema")
-        self.HS = HaplotypesSearcher.HaplotypesSearcher(self.dbName)
-        self.HS.setDb(self.dbName)
-        self.HS.setNewDb(self.dbName)
-        self.HS.signals.database.connect(self.dbReady)
-        self.HS.setOption("configuredb")
-        self.threadPool.start(self.HS)
+        self.dbAdmin = DbAdmin.DbAdmin(self.dbName)
+        self.dbAdmin.setNewDb(self.dbName)
+        self.dbAdmin.signals.database.connect(self.dbReady)
+        self.dbAdmin.setOption("configuredb")
+        self.threadPool.start(self.dbAdmin)
 
     def dbReady(self, status):
         if status=="finished":
