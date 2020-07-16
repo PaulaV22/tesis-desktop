@@ -6,6 +6,8 @@ from Bio.SeqRecord import SeqRecord
 import os
 from Bio import SearchIO
 import sys
+from project.model import DbCreator as DBC
+
 # ESTA CLASE USA EL RESULTADO DE LA ALINEACION DE LAS SECUENCIAS HECHA POR SEARCHER. POR CADA COMPARACION GENERA UNA
 # NUEVA SECUENCIA TENIENDO EN CUENTA QUE LAS DIFERENCIAS ENTRE LAS SECUENCIAS PUEDE SIGNIFICAR UN PUNTO POLIMORFICO
 # EN LAS POSICIONES DONDE SE ENCUENTRAN DIFERENCIAS SE REEMPLAZAN POR LA LETRA QUE REPRESENTA ESA COMBINACION
@@ -18,17 +20,13 @@ import sys
 # ARCHIVOS GENERADOS POR ESTA CLASE
 
 
-class AmbiguousDbCreator:
+class AmbiguousDbCreator(DBC.DbCreator):
 
     def __init__(self, filesPath, intermediateDb, outputFile, outputFormat, newDb, dbName):
         # recibe (BlastResult, Nuevadb, salida, fasta, "DbAmbigua", "BoLa")
         #self.projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        self.filesPath = self.resourcePath("/"+filesPath +"/" + dbName)
         self.intermediateDb = intermediateDb
-        self.outputFile = outputFile
-        self.outputFormat =outputFormat
-        self.newDb = newDb
-        self.dbName= dbName
+        DBC.DbCreator.__init__(self, filesPath, newDb, dbName, outputFile, outputFormat)
         self.sc = SC.SimpleDbCreator(intermediateDb, newDb, dbName, outputFile, outputFormat)
         self.ambiguousPos= dict()
         # super(AmbiguousDbCreator, self).__init__(dbPath, newDb, outputFile, outputFormat)

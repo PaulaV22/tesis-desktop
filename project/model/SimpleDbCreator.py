@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 
+from project.model import DbCreator as DBC
 
 # ESTA CLASE CREA UNA BASE DE DATOS BLAST A PARTIR DE ARCHIVOS DE SECUENCIAS.
 # PARA ESO RECIBE:
@@ -13,8 +14,12 @@ import sys
 #       4: OUTPUT FORMAT ES FASTA
 
 
-class SimpleDbCreator:
+class SimpleDbCreator(DBC.DbCreator):
     def __init__(self, filesPath, newDb, dbName, outputFile, outputFormat):
+        DBC.DbCreator.__init__(self, filesPath, newDb, dbName, outputFile, outputFormat)
+
+
+
         #self.projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         # directorio donde se encuentran las secuencias individuales
         self.filesPath = self.resourcePath("/"+ filesPath)
